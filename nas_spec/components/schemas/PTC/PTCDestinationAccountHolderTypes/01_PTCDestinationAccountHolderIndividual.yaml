@@ -1,0 +1,100 @@
+type: object
+required:
+  - first_name
+  - last_name
+properties:
+  type:
+    type: string
+    description: The type of card holder
+  first_name:
+    type: string
+    description: The payout destination owner's first name (cannot be an initial)
+    maxLength: 35
+  middle_name:
+    type: string
+    description: The payout destination owner's middle name. Should be used when `account_holder.type` = `individual` for cross-border transactions into South Africa
+    maxLength: 35
+  last_name:
+    type: string
+    description: The payout destination owner's last name
+    maxLength: 35
+  date_of_birth:
+    type: string
+    description: The payout destination owner's date of birth
+    maxLength: 10
+    minLength: 10
+  country_of_birth:
+    type: string
+    description: The payout destination owner's country of birth
+    maxLength: 2
+    minLength: 2
+  billing_address:
+    type: object
+    properties:
+      address_line1:
+        type: string
+        description: The first line of the address
+        maxLength: 50
+      address_line2:
+        type: string
+        description: The second line of the address
+        maxLength: 50
+      city:
+        type: string
+        description: The address city
+        maxLength: 25
+      state:
+        type: string
+        description: The address state
+        maxLength: 3
+        minLength: 2
+      zip:
+        type: string
+        description: The address ZIP (postal) code
+        maxLength: 10
+      country:
+        type: string
+        description: The [two-letter ISO country code](https://docs.checkout.com/resources/codes/country-codes) of the address
+  phone:
+    type: object
+    properties:
+      country_code:
+        type: string
+        description: The [international country calling code](https://docs.checkout.com/resources/codes/country-codes) of the address
+        maxLength: 7
+        minLength: 1
+      number:
+        type: string
+        description: The phone number
+        maxLength: 25
+        minLength: 6
+  identification:
+    type: object
+    properties:
+      type:
+        type: string
+        description: The payout destination owner's ID type
+        enum:
+          - passport
+          - driving_licence
+          - national_id
+          - company_registration
+          - tax_id
+      number:
+        type: string
+        description: The payout destination owner's ID number
+        maxLength: 25
+      country_of_issue:
+        type: string
+        description: The payout destination owner's ID country of issue
+        maxLength: 2
+        minLength: 2
+      expiry_date:
+        type: string
+        description: The payout destination owner's ID expiry date
+        maxLength: 10
+        minLength: 10
+  email:
+    type: string
+    description: The payout destination owner's email address
+    maxLength: 255

@@ -1,0 +1,13 @@
+type: object
+description: The type of sender
+discriminator:
+  propertyName: type
+  mapping:
+    individual: '#/components/schemas/01_PTCSenderAccountHolderIndividual'
+    corporate: '#/components/schemas/02_PTCSenderAccountHolderCorporate'
+    government: '#/components/schemas/03_PTCSenderAccountHolderGovernment'
+properties:
+  type:
+    type: string
+    description: The type of card holder
+    example: 'individual'

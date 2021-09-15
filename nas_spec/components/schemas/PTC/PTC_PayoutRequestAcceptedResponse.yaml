@@ -1,0 +1,50 @@
+type: object
+description: Payout accepted response
+required:
+  - id
+  - status
+properties:
+  id:
+    type: string
+    description: The payment's unique identifier
+    pattern: '^(pay)_(\w{26})$'
+    maxLength: 30
+    minLength: 30
+    example: pay_8n2n4o4dsasergngxiq3cx4xtu
+  status:
+    type: string
+    enum:
+      - Accepted
+      - Rejected
+    description: The status of the payout
+    example: Accepted
+  reference:
+    type: string
+    description: An internal reference you can later use to identify this payout
+    maxLength: 50
+  destination:
+    type: object
+    required:
+      - id
+    properties:
+      account_holder:
+        id:
+          type: string
+          description: The destination's unique identifier. This can be passed as a source when making a payment
+          pattern: '^(src)_(\w{26})$'
+          example: i.e. src_nwd3m4in3hkuddfpjsaevunhdy
+        email:
+          type: string
+          maxLength: 255
+          description: The destination owner's email address
+  links:
+    type: object
+    required:
+      - href
+    properties:
+      self:
+        type: object
+        properties:
+          href:
+            type: string
+            description: The link URL

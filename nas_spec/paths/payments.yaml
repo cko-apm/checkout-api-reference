@@ -4,7 +4,7 @@
       - OAuth:
           - gateway
           - gateway:payment
-      - ApiSecretKey: []
+      - ApiSecretKey: [ ]
     tags:
       - Payments
     summary: Request a payment or payout
@@ -19,7 +19,7 @@
           schema:
             oneOf:
               - $ref: '#/components/schemas/PaymentRequest'
-              - $ref: '#/components/schemas/PayoutRequest'
+              - $ref: '#/components/schemas/PTC_PayoutRequest'
           examples:
             Payment:
               value:
@@ -72,91 +72,105 @@
                 metadata:
                   coupon_code: 'NY2018'
                   partner_id: 123989
-            Payout:
+            PTC:
               value:
+                payment_id: "pay_l45ga4nr37cevghk5jkvki34my"
                 source:
-                  type: 'currency_account'
-                  id: 'ca_y3oqhf46pyzuxjbcn2giaqnb44'
+                  id: "ca_q7ypx45iejtu3hustadeuipegy"
+                  amount: 100
                 destination:
-                  type: 'id'
-                  id: 'src_gsd2agaqd2sernz5tpcfv555nq'
-                amount: 1000
-                currency: GBP
-                reference: 'PO-215-5721'
-                billing_descriptor:
-                  reference: 'Withdrawal'
+                  amount": 100,
+                  currency: "GBP"
+                  card_number: "4444333322221111"
+                  card_expiry_year: 2031
+                  card_expiry_month: 12
+                  type: "individual"
+                  first_name: "Frodo"
+                  last_name: "Baggins"
+                  middle_name: ""
+                  company_name": ""
+                  dob: "1902-02-12"
+                  country_of_birth: "NZ"
+                  billing_address_line_1: "1 Bag End"
+                  billing_address_line_2: "The Shire"
+                  billing_address_city: "Hobbiton"
+                  billing_address_state: ""
+                  billing_address_country: "NZ"
+                  billing_address_zip_code: "1R LOTR"
+                  phone_country_code: "64"
+                  phone_number: "07777 123456"
+                  identification_type: "passport"
+                  identification_number: "NZ1234567890"
+                  identification_country_of_issue: "NZ"
+                  identification_expiry_date: "2025-12-01"
+                  email: "frodo.baggins@elf.net"
+                  reference: "merchant_ref_123"
+                  billing_descriptor: "The One Ring"
+                  card_metadata:
+                    fingerprint: "7f2h7238f8798"
+                    scheme": "visa"
+                    last_4": "4552"
+                    bin": "46667"
+                    card_type": "debit"
+                    card_category": "consumer"
+                    issuer": "CitiBank"
+                    issuer_country": "UK"
+                    product_id": "1"
+                    product_type": "a_product_type"
+                    billing_currency": "GBP"
+                    card_sub_type": "reloadable"
+                    lac_combo": "debit + prepaid"
+                    non_mt_oct_domestic": false
+                    ff_non_mt_oct_domestic: false
+                    non_mt_oct_cross_border: false
+                    ff_non_mt_oct_cross_border: false
+                    mt_oct_domestic: false
+                    ff_mt_oct_domestic: false
+                    mt_oct_cross_border: false
+                    ff_mt_oct_cross_border: false
+                    gambling_oct_domestic: false
+                    ff_gambling_oct_domestic: false
+                    gambling_oct_cross_border: false
+                    ff_gambling_oct_cross_border: false
+                    oct_eligible: "Y"
+                    ff_eligible: "Y"
+                    account_range_min: "45660"
+                    account_range_max: "45699"
+                    country_code: 1
+                    region: "a_region"
                 sender:
-                  type: 'instrument'
-                  reference: '8285282045818'
+                  type: "individual"
+                  first_name: "Jake"
+                  last_name: "Peralta"
+                  middle_name: ""
+                  company_name: ""
+                  address_line_1: "99th Precinct"
+                  address_line_2: "Brooklyn"
+                  city: "New York"
+                  state: "NY"
+                  zip: "10099"
+                  country: "US"
+                  dob: "1985-12-12"
+                  country_of_birth: "US"
+                  reference: "sender_ref_123"
+                  reference_type: "social_network_id"
+                  source_of_funds: "credit"
+                  identification_type: "driving_license"
+                  identification_number: "US1234599"
+                  identification_country_of_issue: "US"
+                  identification_expiry_date: "2029-12-01"
+                  identification_nationality: "US"
                 instruction:
-                  purpose: 'Withdrawal'
-                  scheme: 'local'
-                  quote_id: 'qte_mbabizu24mvu3mela5njyhpit4'
-                processing_channel_id: 'pc_hpswyyx23geezflc2ocz3exn4y'
-
+                  action_id: "act_bc7z4hrgswnuxbjjov6z5mk4za"
+                  transaction_id: "109745d3-259b-4612-a87a-916c1b2c4214"
+                  processing_channel_id: "pc_ybhb2bmz5cvexgqrqi2dzgarju"
+                  fx_quote_id: "qte_76kewxu3ayfezhf2xxkjacieda"
+                  fund_transfer_type: "C07"
+                  mvv: "1234"
+                  purpose: "travel_and_tourism"
+                client:
+                  entity_id: "ent_l4ez4j32ouaefkl77yoade65va"
     responses:
-      '201':
-        description: Payment processed successfully
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PaymentResponse'
-            example:
-              id: 'pay_mbabizu24mvu3mela5njyhpit4'
-              action_id: 'act_mbabizu24mvu3mela5njyhpit4'
-              amount: 6540
-              currency: 'USD'
-              approved: true
-              status: 'Authorized'
-              auth_code: '770687'
-              response_code: '10000'
-              response_summary: 'Approved'
-              3ds:
-                downgraded: true
-                enrolled: 'N'
-              risk:
-                flagged: true
-              source:
-                type: 'card'
-                id: 'src_nwd3m4in3hkuddfpjsaevunhdy'
-                billing_address:
-                  address_line1: 'Checkout.com'
-                  address_line2: '90 Tottenham Court Road'
-                  city: 'London'
-                  state: 'London'
-                  zip: 'W1T 4TJ'
-                  country: 'GB'
-                phone:
-                  country_code: '+1'
-                  number: '415 555 2671'
-                last4: '4242'
-                fingerprint: 'F31828E2BDABAE63EB694903825CDD36041CC6ED461440B81415895855502832'
-                bin: '424242'
-              customer:
-                id: 'cus_udst2tfldj6upmye2reztkmm4i'
-                email: 'brucewayne@gmail.com'
-                name: 'Bruce Wayne'
-              processed_on: '2019-09-10T10:11:12Z'
-              reference: 'ORD-5023-4E89'
-              processing:
-                retrieval_reference_number: '909913440644'
-                acquirer_transaction_id: '440644309099499894406'
-              eci: '06'
-              scheme_id: '489341065491658'
-              _links:
-                self:
-                  href: 'https://api.sandbox.checkout.com/payments/pay_mbabizu24mvu3mela5njyhpit4'
-                action:
-                  href: 'https://api.sandbox.checkout.com/payments/pay_mbabizu24mvu3mela5njyhpit4/actions'
-                void:
-                  href: 'https://api.sandbox.checkout.com/payments/pay_mbabizu24mvu3mela5njyhpit4/captures'
-                capture:
-                  href: 'https://api.sandbox.checkout.com/payments/pay_mbabizu24mvu3mela5njyhpit4/voids'
-        headers:
-          Cko-Request-Id:
-            $ref: '#/components/headers/Cko-Request-Id'
-          Cko-Version:
-            $ref: '#/components/headers/Cko-Version'
       '202':
         description: Payment asynchronous or further action required
         content:
@@ -164,7 +178,7 @@
             schema:
               oneOf:
                 - $ref: '#/components/schemas/PaymentAcceptedResponse'
-                - $ref: '#/components/schemas/PayoutAcceptedResponse'
+                - $ref: '#/components/schemas/PTC_PayoutRequestAcceptedResponse'
         headers:
           Cko-Request-Id:
             $ref: '#/components/headers/Cko-Request-Id'

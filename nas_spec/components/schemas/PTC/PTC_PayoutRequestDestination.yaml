@@ -1,0 +1,13 @@
+type: object
+description: The destination of the payout
+discriminator:
+  propertyName: type
+  mapping:
+    token: '#/components/schemas/01_PTCDestinationTypeToken'
+    id: '#/components/schemas/02_PTCDestinationTypeId'
+    card: '#/components/schemas/03_PTCDestinationTypeCard'
+properties:
+  type:
+    type: string
+    description: The payout destination type
+    example: 'card'

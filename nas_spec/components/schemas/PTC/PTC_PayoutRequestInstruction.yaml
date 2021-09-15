@@ -1,0 +1,12 @@
+type: object
+discriminator:
+  propertyName: type
+  mapping:
+    individual: '#/components/schemas/01_PTCInstructionAccountHolderIndividual'
+    corporate: '#/components/schemas/02_PTCInstructionAccountHolderCorporate'
+    government: '#/components/schemas/03_PTCInstructionAccountHolderGovernment'
+properties:
+  type:
+    type: string
+    description: The type of card holder
+    example: 'individual'

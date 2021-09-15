@@ -1,0 +1,110 @@
+type: object
+description: The source of the payout
+properties:
+  source:
+    type: object
+    required:
+      - type
+      - id
+    properties:
+      type:
+        type: string
+        enum:
+          - currency_account
+      id:
+        type: string
+        description: The currency account ID to fund the payout
+        pattern: '^(ca)_(\w{26})$'
+        maxLength: 29
+        minLength: 29
+      amount:
+        type: integer
+        description: Amount to be paid out from currency account. One of `source.amount` or `amount` must be provided
+  destination:
+    $ref: '#/components/schemas/PTC_PayoutRequestDestination'
+  amount:
+    type: integer
+    description: The payout destination amount. The exact format [depends on the currency](https://docs.checkout.com/resources/calculating-the-value). One of `source.amount` or `amount` must be provided
+  sender:
+    $ref: '#/components/schemas/PTC_PayoutRequestSender'
+  currency:
+    type: string
+    description: The [three-letter currency code](https://docs.checkout.com/resources/codes/currency-codes)
+  reference:
+    type: string
+    description: A reference you can later use to identify this payout, such as an order number
+    maxLength: 50
+  billing_descriptor:
+    type: string
+    description: A billing descriptor displayed on the account owner's statement
+    maxLength: 14
+  instruction:
+    type: object
+    properties:
+      skip_expiry:
+        type: boolean
+      purpose:
+        type: string
+        enum:
+          - family_support
+          - expatriation
+          - travel_and_tourism
+          - education
+          - medical_treatment
+          - emergency_need
+          - leisure
+          - savings
+          - gifts
+          - donations
+          - financial_services
+          - it_services
+          - investment
+          - insurance
+          - loan_payment
+          - pension
+          - royalties
+          - other
+          - income
+      funds_transfer_type:
+        type: string
+        description: The funds transfer type
+        enum:
+          - AA
+          - BI
+          - PP
+          - WT
+          - BB
+          - BP
+          - CP
+          - FD
+          - FT
+          - GD
+          - GP
+          - LO
+          - MD
+          - OG
+          - PD
+          - TU
+          - C04
+          - C07
+          - C52
+          - C53
+          - C54
+          - C55
+          - C56
+          - C57
+          - C65
+      mvv:
+        type: integer
+        description: The Merchant Verification Value
+        maxLength: 10
+      fx_quote_id:
+        type: string
+        description: The quote ID of the transaction if obtained before making payout
+      processing_channel_id:
+        type: string
+  client:
+    type: object
+    properties:
+      entity_id:
+        type: string

@@ -6,7 +6,7 @@
       - OAuth:
           - gateway
           - gateway:payment-details
-      - ApiSecretKey: []
+      - ApiSecretKey: [ ]
     summary: Get payment actions
     description: |
       Returns all the actions associated with a payment ordered by processing date in descending order (latest first).
@@ -24,7 +24,7 @@
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PaymentActionsResponse'
+              $ref: '#/components/schemas/PTC_PaymentActionsResponse'
         headers:
           Cko-Request-Id:
             $ref: '#/components/headers/Cko-Request-Id'

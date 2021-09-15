@@ -1,0 +1,23 @@
+type: object
+description: A token payment source
+required:
+  - type
+properties:
+  type:
+    type: string
+    description: The payout destination type
+  id:
+    type: string
+    description: The payment source identifier (eg a card source identifier)
+  account_holder:
+    type: object
+    discriminator:
+      propertyName: type
+      mapping:
+        individual: '#/components/schemas/01_PTCDestinationAccountHolderIndividual'
+        corporate: '#/components/schemas/02_PTCDestinationAccountHolderCorporate'
+        government: '#/components/schemas/03_PTCDestinationAccountHolderGovernment'
+    properties:
+      type:
+        type: string
+        example: 'individual'

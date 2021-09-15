@@ -6,7 +6,7 @@
       - OAuth:
           - gateway
           - gateway:payment-details
-      - ApiSecretKey: []
+      - ApiSecretKey: [ ]
     summary: Get payment details
     description: |
       Returns the details of the payment with the specified identifier string.
@@ -21,7 +21,7 @@
         name: id
         schema:
           type: string
-          pattern: "^(pay|sid)_(\\w{26})$"
+          pattern: '^(pay|sid)_(\w{26})$'
         required: true
         description: The payment or payment session identifier
     responses:
@@ -30,9 +30,7 @@
         content:
           application/json:
             schema:
-              oneOf:
-                - $ref: '#/components/schemas/PaymentDetails'
-                - $ref: '#/components/schemas/PayoutDetails'
+              $ref: '#/components/schemas/PTC_GetPaymentAcceptedResponse'
         headers:
           Cko-Request-Id:
             $ref: '#/components/headers/Cko-Request-Id'
@@ -42,3 +40,4 @@
         description: Unauthorized
       '404':
         description: Payment not found
+
