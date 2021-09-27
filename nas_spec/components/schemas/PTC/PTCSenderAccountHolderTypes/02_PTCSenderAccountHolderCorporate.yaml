@@ -48,7 +48,7 @@ properties:
     type: string
     enum:
       - rtn_and_bank_account_number
-      - IBAN
+      - iban
       - card_account
       - email
       - phone_number

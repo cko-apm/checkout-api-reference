@@ -9,16 +9,6 @@ properties:
     type: string
     description: The payout destination owner's company name
     maxLength: 35
-  date_of_birth:
-    type: string
-    description: The payout destination owner's date of birth
-    maxLength: 10
-    minLength: 10
-  country_of_birth:
-    type: string
-    description: The payout destination owner's country of birth
-    maxLength: 2
-    minLength: 2
   billing_address:
     type: object
     properties:
