@@ -118,8 +118,8 @@ properties:
         example: '440644309099499894406'
       recommendation_code:
         type: string
-        description: "A code which gives the context of the decline"
-        example: "01"
+        description: "A code that represents the next recommended action when retry this payment"
+        example: "02"
   eci:
     type: string
     description: The final Electronic Commerce Indicator (ECI) security level used to authorize the payment.
