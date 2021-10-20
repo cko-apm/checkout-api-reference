@@ -9,7 +9,7 @@ on:
 
 env:
   CI: true
-  PAT: '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'
+  PAT: ${{secrets.PAT}}
 
 jobs:
   upload-spec:
