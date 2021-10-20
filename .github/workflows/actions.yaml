@@ -5,7 +5,7 @@ name: Creates a PR for APM team changes in documentation around APMs
 on:
   push:
     branches:      
-      - 'main'  
+      - 'master'  
 
 env:
   CI: true
