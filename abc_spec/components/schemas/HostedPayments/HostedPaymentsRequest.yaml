@@ -8,7 +8,7 @@ required:
 properties:
   amount:
     type: integer
-    description: The payment amount. The exact format <a href="https://docs.checkout.com/docs/calculating-the-value" target="_blank">depends on the currency</a>
+    description: The payment amount. The exact format <a href="https://www.checkout.com/docs/resources/calculating-the-value" target="_blank">depends on the currency</a>
     minimum: 1
     example: 1000
   currency:
@@ -17,6 +17,34 @@ properties:
     example: GBP
     minLength: 3
     maxLength: 3
+  payment_type:
+    type: string
+    description: This must be specified for card payments where the cardholder is not present (i.e., recurring or mail order / telephone order)
+    enum:
+      - Regular
+      - Recurring
+    default: Regular
+  payment_ip:
+    type: string
+    format: ipv4
+    maxLength: 45
+    description: The IP address used to make the payment. Used by our risk engine to check the customer's IP address – only accepts IPv4 addresses
+  billing_descriptor:
+    type: object
+    description: An optional description that is displayed on the customer's statement identifying a purchase
+    required:
+      - name
+      - city
+    properties:
+      name:
+        type: string
+        maxLength: 25
+        description: A dynamic description of the change
+      city:
+        type: string
+        minLength: 1
+        maxLength: 13
+        description: The city from which the charge originated
   reference:
     type: string
     description: A reference you can later use to identify this payment, such as an order number
@@ -92,6 +120,25 @@ properties:
       aft:
         type: boolean
         description: Indicates whether the payment is an [Account Funding Transaction](https://docs.checkout.com/payment-actions/account-funding-transactions).
+  allow_payment_methods:
+    type: array
+    description: >
+      Use to specify which <a href="https://www.checkout.com/docs/payments/payment-methods" target="_blank">payment methods</a> should render on the page. <a href="https://checkout.com/docs/integrate/hosted-payments-page/manage-your-hosted-payments-page#Alternative_payment_methods" target="_blank">Check the requirements for each payment method</a>
+    enum:
+      - card
+      - sofort
+      - klarna
+      - paypal
+      - ideal
+      - sepa
+      - knet
+      - giropay
+      - bancontact
+      - eps
+      - p24
+      - multibanco
+    example:
+      - card
   products:
     type: array
     description: Details about the products in the order
@@ -116,9 +163,8 @@ properties:
           example: 1
         price:
           type: integer
-          description: 'Minor units. Includes tax, excludes discounts. The exact format <a href="https://docs.checkout.com/docs/calculating-the-value" target="_blank">depends on the currency</a>'
+          description: 'Minor units. Includes tax, excludes discounts. The exact format <a href="https://www.checkout.com/docs/resources/calculating-the-value" target="_blank">depends on the currency</a>'
           minimum: 0
-          maximum: 100000000
           example: 1000
   risk:
     $ref: '#/components/schemas/RiskRequest'

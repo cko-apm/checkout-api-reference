@@ -17,7 +17,7 @@ info:
   description: >
     ##  Get started
 
-    Checkout.com provides a collection of APIs that enable you to process and manage payments. Our APIs accept and return JSON in the HTTP body, and return standard <a href="https://docs.checkout.com/four/resources/codes/http-response-codes">HTTP response codes</a>.
+    Checkout.com provides a collection of APIs that enable you to process and manage payments. Our APIs accept and return JSON in the HTTP body, and return standard <a href="https://www.checkout.com/docs/four/resources/codes/http-response-codes">HTTP response codes</a>.
 
     You can consume the APIs directly using your favorite HTTP/REST library.
 
@@ -36,10 +36,10 @@ info:
     Never share your client credentials, API keys, or access tokens. Keep them guarded and secure.
 
 servers:
-  - url: https://api.checkout.com
-    description: Live API
   - url: https://api.sandbox.checkout.com
     description: Sandbox API
+  - url: https://api.checkout.com
+    description: Live API
 tags:
   - name: Access
     description: Create an access token to begin using our APIs.
@@ -69,6 +69,11 @@ tags:
     description: Evaluate the risk of a transaction at the pre-authentication and pre-capture stages of the payment process.
   - name: Apple Pay
     description: Manage your Apple Pay certificates in order to process payments via Apple Pay.
+  - name: Transfers
+    description: Transfer funds while managing the entities to transfer money to recoup funds from a seller, return money from a refund or to make up the difference when running a promotion.
+  - name: Balances
+    description: View balances for currency accounts belonging to an entity.
+
   # - name: Files
   #   description: |
   #     Upload files to be used as input to other APIs
@@ -84,6 +89,8 @@ x-tagGroups:
       - Hosted Payments Page
       - Forex
       - Apple Pay
+      - Transfers
+      - Balances
   - name: Stored payment details
     tags:
       - Tokens

@@ -8,6 +8,10 @@ properties:
     type: string
     description: A name you can use to describe your workflow
     example: Webhooks workflow
+  active:
+    type: boolean
+    description: Indicates whether the workflow is currently active
+    example: true
   conditions:
     type: array
     description: One or more workflow conditions
@@ -26,6 +30,7 @@ example:
   {
     'id': 'wf_34pacj7ae6wexju4avpecxvp6e',
     'name': 'Webhooks workflow',
+    'active': true,
     'conditions':
       [
         {
@@ -49,6 +54,18 @@ example:
               'self':
                 {
                   'href': 'https://api.checkout.com/workflows/wf_34pacj7ae6wexju4avpecxvp6e/conditions/wfc_tisekcawefze3l27uaai6hz74y',
+                },
+            },
+        },
+        {
+          'id': 'wfc_tisekcawefze3l27uaai6hz26y',
+          'type': 'processing_channel',
+          'processing_channels': ['pc_axclravnqf5u5ejkweijnp5zc4'],
+          '_links':
+            {
+              'self':
+                {
+                  'href': 'https://api.checkout.com/workflows/wf_34pacj7ae6wexju4avpecxvp6e/conditions/wfc_tisekcawefze3l27uaai6hz26y',
                 },
             },
         },

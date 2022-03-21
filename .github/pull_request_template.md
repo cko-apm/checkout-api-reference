@@ -2,10 +2,9 @@
 
 [//]: # 'Please add your description here'
 
-# Technical Writer
+## Checklist
 
-[//]: # 'Tag your Technical Writer'
+- [ ] Added a changelog entry to the `changelog.md` file in either `abc_spec` or `nas_spec`
+- [ ] Contacted the Tech Docs team about any corresponding guides that need to be updated for www.checkout.com/docs
 
-## Did you create this PR manually?
-
-Look at our documentation for [creating a GitHub workflow](https://checkout.atlassian.net/wiki/spaces/PD/pages/4844781738/GitHub+Actions+for+API+Ref) to automate the process.
+**Contributing options**: Look at [our documentation](https://checkout.atlassian.net/wiki/spaces/PD/pages/2169506663/API+ref+publication+process) for options to contribute to the API reference.
