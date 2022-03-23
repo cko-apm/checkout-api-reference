@@ -2,6 +2,13 @@
 'use strict';
 var Path = require('path');
 
+process.on('uncaughtException', err => {
+	console.log('Uncaught Exception Encountered!!');
+	console.log('err: ', err);
+	console.log('Stack trace: ', err.stack);
+	setInterval(function () { }, 10000);
+});
+
 require('shelljs/global');
 set('-e');
 
