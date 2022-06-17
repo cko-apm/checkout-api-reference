@@ -2,6 +2,7 @@
 
 | Date       | Description of change                                                                                                 |
 | ---------- | --------------------------------------------------------------------------------------------------------------------- |
+| 2022/06/17 | Added Benefit request and response sources.                                                                           |
 | 2022/03/23 | Added Giropay and Eps request and response sources.  
 | 2022/03/23 | Added Qpay request and response sources.    
 | 2022/03/18 | Added Cartes Bancaires changes to Sessions request and response.                                                      |
