@@ -13,3 +13,6 @@ specs.syncPaymentResponse('Giropay', 'http://qa-gateway-internal.cko.lon/giropay
 
 specs.syncPaymentRequest('Eps', 'http://qa-gateway-internal.cko.lon/giropay-internal/eps/relations/gw/pay');
 specs.syncPaymentResponse('Eps', 'http://qa-gateway-internal.cko.lon/giropay-internal/eps/relations/gw/payment');
+
+specs.syncPaymentRequest('Benefit', "https://apm-benefit.cko-sbox.ckotech.co/relations/gw/pay")
+specs.syncPaymentResponse('Benefit', "https://apm-benefit.cko-sbox.ckotech.co/relations/gw/payment")

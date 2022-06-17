@@ -1,0 +1,16 @@
+###
+# Warning: this file was auto generated from OpenAPI specs. Do not manually edit. 
+###
+type: object
+description: 'Benefit Source'
+allOf:
+  -
+    $ref: '#/components/schemas/PaymentRequestSource'
+  -
+    type: object
+    required:
+      - reference
+    properties:
+      reference:
+        type: string
+        description: 'Merchant unique reference no.'
