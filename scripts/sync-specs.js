@@ -90,7 +90,7 @@ var getFunctionToBuildPaymentRequest = function (paymentSourceName) {
 };
 
 var addDescriptionToKlarnaPassthroughObjects = function (requestData, paymentSourceName) {
-	if(requestData && requestData.properties) {
+	if (requestData && requestData.properties) {
 		Object.keys(requestData.properties).forEach((propertyName) => {
 			var property = requestData.properties[propertyName];
 			if (property['x-cko-passthrough'] === true && property['x-klarna-docs']) {
@@ -109,7 +109,9 @@ var addDescriptionToKlarnaPassthroughObjects = function (requestData, paymentSou
 					').';
 			}
 		});
-	}else console.info('request_data is empty')
+	} else {
+		console.info('request_data is empty')
+	}
 };
 
 var getFunctionToBuildPaymentResponse = function (paymentSourceName) {
