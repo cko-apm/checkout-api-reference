@@ -11,8 +11,6 @@ specs.syncPaymentRequest('Eps', 'http://sb-gateway-internal.cko.lon/giropay-inte
 specs.syncPaymentResponse('Eps', 'http://sb-gateway-internal.cko.lon/giropay-internal/eps/relations/gw/payment');
 specs.syncPaymentRequest('Ideal', 'http://sb-gateway-internal.cko.lon/ideal-internal-api/relations/gw/pay');
 specs.syncPaymentResponse('Ideal', 'http://sb-gateway-internal.cko.lon/ideal-internal-api/relations/gw/payment');
-specs.syncPaymentRequest('Klarna', 'http://sb-gateway-internal.cko.lon/klarna-internal/relations/gw/pay');
-specs.syncPaymentResponse('Klarna', 'http://sb-gateway-internal.cko.lon/klarna-internal/relations/gw/payment');
 specs.syncPaymentRequest('Knet', 'http://sb-gateway-internal.cko.lon/knet-internal/relations/gw/pay');
 specs.syncPaymentResponse('Knet', 'http://sb-gateway-internal.cko.lon/knet-internal/relations/gw/payment');
 specs.syncPaymentRequest('Bancontact', 'http://sb-gateway-internal.cko.lon/ppro-internal/bancontact/relations/gw/pay');
