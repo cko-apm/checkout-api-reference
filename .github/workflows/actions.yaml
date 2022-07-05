@@ -24,30 +24,7 @@ jobs:
         with:
           persist-credentials: true
           repository: cko-apm/checkout-api-reference
-          ref: ${{ steps.extract_branch.outputs.branch }}                   
-              
-      - name: Delete non-APM files
-        run: |
-          echo ********** Listing contents of spec/ ************
-          ls spec/*/**
-          echo ********** Created an empty folder ************
-          mkdir newspec
-          echo ********** Copying over what we need into the new folder ************
-          mkdir -p newspec/components/schemas
-          cp -r spec/components/**/Demo newspec/components/schemas
-          mkdir -p newspec/paths
-          cp spec/paths/demo*.* newspec/paths          
-          echo ********** Listing contents of newspec/ ************
-          ls spec/*/**   
-          echo ********** Creating copies of spec for ABC and NAS ************
-          cp -r newspec/ nas_spec/
-          cp -r newspec/ abc_spec/
-          echo ********** Ready to upload specs ************
-          
-      - uses: actions/upload-artifact@v2
-        with:
-          name: specification
-          path: newspec/
+          ref: ${{ steps.extract_branch.outputs.branch }} 
         
   publish-spec:
     runs-on: ubuntu-latest
